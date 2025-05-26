@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição do Mercado Trovão, seu mercado online para eletrônicos, roupas e mobília.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Trovão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="pro.css" />
+
+  <script>
+    function toggleSidebar() {
+   const sidebar = document.getElementById('sidebar');
+   const sidebarWidth = window.getComputedStyle(sidebar).width;
+   const currentLeft = window.getComputedStyle(sidebar).left;
+ 
+   sidebar.style.left = currentLeft === `-${sidebarWidth}` ? '0' : `-${sidebarWidth}`;
+ }
+ 
+   </script>
+ <style>
+
+.payment-container {
+  margin: auto;
+  margin-top: 3%;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+ 
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.payment-container h2 {
+  color: #005eff;
+  margin-bottom: 20px;
+ 
+  font-size: 24px;
+}
+
+.payment-container img {
+  max-width: 300px;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.pix-code-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  font-family: monospace;
+  word-break: break-all;
+  width: 358px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.pix-code {
+  flex-grow: 1;
+}
+
+.copy-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 18px;
+  color: #005eff;
+  position: relative;
+}
+
+.copy-icon::after {
+  content: 'copiar';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.copy-icon:hover::after {
+  opacity: 1;
+}
+
+.payment-container button {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.payment-container .confirm-button {
+  background: #ff8c00;
+  color: #fff;
+}
+
+.payment-container .confirm-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.payment-container .cancel-button {
+  background: #ccc;
+  color: #333;
+}
+
+.payment-container .cancel-button:hover {
+  background: #b0b0b0;
+}
+ </style>
+   
+
+  
+
+
+
+</head>
+<body>
+  <!-- Cabeçalho adaptado -->
+  <header class="header">
+
+
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&#10006;</button>
+        <nav>
+          <ul>
+              <li><a href="inicial.html">Início</a></li>
+              <li><a href="meusPedidos.html">Meus Pedidos</a></li>
+              <li><a href="configDados.html">Meus Dados</a></li>
+              <li><a href="cadastroTransportadora.html">Cadastrar Transporadora</a></li>
+              <li><a href="cadastroCliente.html">Cadastrar cliente</a></li>
+              <li><a href="cadastroFornecedor.html">Cadastrar Fornecedor</a></li>
+              <li><a href="cadastroProduto.html">Cadastrar Produto</a></li>
+              
+            </ul>
+            </nav>
+      </div>
+   
+
+
+      <button class="open-sidebar-btn" onclick="toggleSidebar()">&#9776;</button>
+
+
+   
+      <div class="container">
+        <a href="inicial.html"><div class="logo"></a>
+          <a href="inicial.html"><img src="img/logo.webp" alt="Logo Mercado Trovão"></a>
+         <a href="inicial.html"> <h1>Mercado Trovão</h1></a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar produtos...">
+          <button>Pesquisar</button>
+        </div>
+        <div class="auth-buttons">
+          <a href="login.html"><button>Log In</button></a>
+          <a href="cadastrar.html"><button>Cadastrar</button></a>
+          <div class="cart-icon" id="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+            <div class="cart-dropdown" id="cart-dropdown">
+              <!-- Itens do carrinho -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
+  <div class="payment-container">
+    <h2>Pagamento com Pix</h2>
+    <img src="https://codigosdebarrasbrasil.com.br/wp-content/uploads/2019/09/codigo_qr-300x300.png" alt="QR Code Pix">
+    <div class="pix-code-container">
+      <div class="pix-code">00020126580014BR.GOV.BCB.PIX0136key-do-mercado@provedor.com5204000053039865406150.005802BR5920Mercado Trovão6009SAO PAULO61080540900062070503***6304ABCD</div>
+      <div class="copy-icon" onclick="copyPixCode()">&#x2398;</div>
+    </div>
+    <a href="finalizado.html"><button type="button" class="confirm-button">Confirmar</button></a>
+    <a href="inicial.html"><button type="button" class="cancel-button">Cancelar</button></a>
+  </div>
+
+  <script>
+    function copyPixCode() {
+      const pixCode = document.querySelector('.pix-code').innerText;
+      navigator.clipboard.writeText(pixCode).then(() => {
+        console.log('Código Pix copiado para a área de transferência!');
+      }, () => {
+        console.log('Falha ao copiar o código Pix. Tente novamente.');
+      });
+    }
+  </script>
+</body>
+</html>

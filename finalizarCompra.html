@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição do Mercado Trovão, seu mercado online para eletrônicos, roupas e mobília.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Trovão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="pro.css" />
+
+  <script>
+    function toggleSidebar() {
+   const sidebar = document.getElementById('sidebar');
+   const sidebarWidth = window.getComputedStyle(sidebar).width;
+   const currentLeft = window.getComputedStyle(sidebar).left;
+ 
+   sidebar.style.left = currentLeft === `-${sidebarWidth}` ? '0' : `-${sidebarWidth}`;
+ }
+ 
+   </script>
+ <style>
+
+.containerF {
+  
+  margin: auto;
+  margin-top: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.left-section, .right-section {
+  flex: 1;
+  margin: 10px;
+}
+.left-section {
+  max-width: 60%;
+}
+.right-section {
+  max-width: 40%;
+  text-align: center;
+}
+h2 {
+  color: #005eff;
+  margin-bottom: 20px;
+}
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.info {
+  margin-bottom: 15px;
+}
+.info label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.info p {
+  margin: 5px 0;
+}
+.price {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0;
+}
+
+#confirm-button {
+  width: 100%;
+  font-size: 1.2em;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #28a745;
+  transition: background-color 0.3s;
+}
+#confirm-button:hover {
+  background-color: #218838;
+}
+.info button:hover{
+  background-color: #ffffff;
+  color: #005eff;
+}
+ </style>
+   
+
+  
+
+
+
+</head>
+<body>
+  <!-- Cabeçalho adaptado -->
+  <header class="header">
+
+
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&#10006;</button>
+        <nav>
+          <ul>
+              <li><a href="inicial.html">Início</a></li>
+              <li><a href="meusPedidos.html">Meus Pedidos</a></li>
+              <li><a href="configDados.html">Meus Dados</a></li>
+              <li><a href="cadastroTransportadora.html">Cadastrar Transporadora</a></li>
+              <li><a href="cadastroCliente.html">Cadastrar cliente</a></li>
+              <li><a href="cadastroFornecedor.html">Cadastrar Fornecedor</a></li>
+              <li><a href="cadastroProduto.html">Cadastrar Produto</a></li>
+              
+            </ul>
+            </nav>
+      </div>
+   
+
+
+      <button class="open-sidebar-btn" onclick="toggleSidebar()">&#9776;</button>
+
+
+   
+      <div class="container">
+        <a href="inicial.html"><div class="logo"></a>
+          <a href="inicial.html"><img src="img/logo.webp" alt="Logo Mercado Trovão"></a>
+         <a href="inicial.html"> <h1>Mercado Trovão</h1></a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar produtos...">
+          <button>Pesquisar</button>
+        </div>
+        <div class="auth-buttons">
+          <a href="login.html"><button>Log In</button></a>
+          <a href="cadastrar.html"><button>Cadastrar</button></a>
+          <div class="cart-icon" id="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+            <div class="cart-dropdown" id="cart-dropdown">
+              <!-- Itens do carrinho -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </header> 
+  <div class="containerF">
+    <!-- Seção da esquerda -->
+    <div class="left-section">
+      <h2>Detalhes do Pedido</h2>
+      <div class="info">
+        <label>Endereço de Entrega:</label>
+        <p id="address">Carregando endereço...</p>
+        <button onclick="changeAddress()">Mudar Endereço</button>
+      </div>
+      <div class="info">
+        <label>Método de Pagamento:</label>
+        <p id="payment-method">Carregando...</p>
+      
+        <button onclick="changePay()">Mudar de Pagamento</button>
+      </div>
+      
+
+      
+      <div class="info">
+        <label>Método de Envio:</label>
+        <p id="shipping-method">Carregando...</p>
+        <button onclick="changeEnvio()">Método de Envio</button>
+      </div>
+    </div>
+    <!-- Seção da direita -->
+    <div class="right-section">
+      <h2>Resumo do Produto</h2>
+      <img src="img/celular.png" alt="Produto" class="product-image" id="product-image">
+      <div class="info">
+        <label>Produto:</label>
+        <p id="product-name">Carregando produto...</p>
+      </div>
+      <div class="price" id="order-value">Carregando valor...</div>
+      <button id="confirm-button" onclick="confirmPurchase()">Confirmar Compra</button>
+    </div>
+  </div>
+  <script>
+    // Função para carregar o endereço do localStorage
+    function loadAddress() {
+      const endereco = JSON.parse(localStorage.getItem("endereco"));
+      const addressElement = document.getElementById("address");
+      if (endereco) {
+        addressElement.innerHTML = `${endereco.logradouro}, ${endereco.numero} <br> ${endereco.bairro}, ${endereco.cidade} - ${endereco.estado} <br> CEP: ${endereco.cep}`;
+      } else {
+        addressElement.innerText = "Endereço não encontrado.";
+      }
+    }
+
+    // Carregar dados no DOM
+    document.addEventListener('DOMContentLoaded', function () {
+      const productName = localStorage.getItem('productName') || 'Smartphone Samsung Galaxy S23';
+      const productImage = localStorage.getItem('productImage') || 'img/celular.png';
+      const paymentMethod = localStorage.getItem('paymentMethod') || 'Não selecionado';
+      const shippingMethod = localStorage.getItem('shippingMethod') || 'Não selecionado';
+      const totalPrice = localStorage.getItem('totalPrice') || 'Valor não disponível';
+
+      document.getElementById('product-name').textContent = productName;
+      document.getElementById('product-image').src = productImage;
+      document.getElementById('payment-method').textContent = paymentMethod;
+      document.getElementById('shipping-method').textContent = shippingMethod;
+      document.getElementById('order-value').textContent = `R$ ${totalPrice}`;
+    });
+
+    let pay = localStorage.getItem('paymentMethod');
+
+    function changeAddress() {
+      window.location.href = "enderecoRE.html";
+    }
+
+    function changeEnvio() {
+      window.location.href = "envioRE.html";
+    }
+    function changePay() {
+      window.location.href = "pagamentoRE.html";
+    }
+
+
+    function confirmPurchase() {
+    
+      if(pay == "pix"){
+        window.location.href = "telaPagamentoPix.html";
+      }else{
+         window.location.href = "finalizado.html";
+      }
+      
+     
+    }
+
+    window.onload = function () {
+      loadAddress();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição do Mercado Trovão, seu mercado online para eletrônicos, roupas e mobília.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Trovão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="pro.css" />
+
+  <script>
+    function toggleSidebar() {
+   const sidebar = document.getElementById('sidebar');
+   const sidebarWidth = window.getComputedStyle(sidebar).width;
+   const currentLeft = window.getComputedStyle(sidebar).left;
+ 
+   sidebar.style.left = currentLeft === `-${sidebarWidth}` ? '0' : `-${sidebarWidth}`;
+ }
+ 
+   </script>
+ <style>
+    .product-info{
+
+        position: relative;
+        left: 20%;
+    }
+ </style>
+   
+
+  
+
+
+
+</head>
+<body>
+  <!-- Cabeçalho adaptado -->
+  <header class="header">
+
+
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&#10006;</button>
+        <nav>
+          <ul>
+              <li><a href="inicial.html">Início</a></li>
+              <li><a href="meusPedidos.html">Meus Pedidos</a></li>
+              <li><a href="configDados.html">Meus Dados</a></li>
+              <li><a href="cadastroTransportadora.html">Cadastrar Transporadora</a></li>
+              <li><a href="cadastroCliente.html">Cadastrar cliente</a></li>
+              <li><a href="cadastroFornecedor.html">Cadastrar Fornecedor</a></li>
+              <li><a href="cadastroProduto.html">Cadastrar Produto</a></li>
+              
+            </ul>
+            </nav>
+      </div>
+   
+
+
+      <button class="open-sidebar-btn" onclick="toggleSidebar()">&#9776;</button>
+
+
+   
+      <div class="container">
+        <a href="inicial.html"><div class="logo"></a>
+          <a href="inicial.html"><img src="img/logo.webp" alt="Logo Mercado Trovão"></a>
+         <a href="inicial.html"> <h1>Mercado Trovão</h1></a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar produtos...">
+          <button>Pesquisar</button>
+        </div>
+        <div class="auth-buttons">
+          <a href="login.html"><button>Log In</button></a>
+          <a href="cadastrar.html"><button>Cadastrar</button></a>
+          <div class="cart-icon" id="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+            <div class="cart-dropdown" id="cart-dropdown">
+              <!-- Itens do carrinho -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
+
+
+  <div class="container">
+    <div class="product-details">
+
+     
+
+      <div class="product-image">
+        <img src="img/celular.png"alt="Imagem do Smartphone Samsung Galaxy S23">
+        <div class="zoomed-image"></div> <!-- Div para a imagem com zoom -->
+      </div>
+
+     
+
+      <div class="product-info">
+        <h2 class="product-title">Smartphone Samsung Galaxy S23</h2>
+        <p class="product-description">O Samsung Galaxy S23 é um smartphone de última geração, com câmera de 50MP, tela AMOLED de 6,1", bateria de longa duração e o processador Exynos 2200, perfeito para todas as suas necessidades.</p>
+        <p class="product-price">R$ 2.699,00</p>
+        <a href="endereco.html"><button class="buy-now"><i class="fas fa-shopping-cart"></i> Comprar Agora</button></a>
+        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Adicionar ao Carrinho</button>
+       
+        <!-- Sistema de Estrelas -->
+        <div class="rating-container">
+          <div class="stars">
+            <i class="fas fa-star" data-value="1"></i>
+            <i class="fas fa-star" data-value="2"></i>
+            <i class="fas fa-star" data-value="3"></i>
+            <i class="fas fa-star" data-value="4"></i>
+            <i class="fas fa-star" data-value="5"></i>
+          </div>
+          <span class="rating-text">0</span>
+          <span class="votes">(0 votos)</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Comentários -->
+    <div class="comments">
+      <h3>Comentários</h3>
+      <p>Márcio: Horrivel! Mal atendimento, produto não chegou, e olha já comprei a um mês, detestei o site!</p><br>
+      <p>João: Produto muito bom, gostei muito!</p><br>
+      <p>Paulo: Gostei, otima qualidade e envio rápido!</p><br>
+    
+    </div>
+  </div>
+
+
+  <script>
+    // Sistema de Estrelas
+    const stars = document.querySelectorAll('.stars i');
+  const ratingText = document.querySelector('.rating-text');
+  const votesText = document.querySelector('.votes');
+  let totalVotes = 3; // Configurar como 1 para refletir uma nota inicial
+  let currentRating = 3.4; // Nota inicial 3.4
+
+  // Atualiza as estrelas
+  function updateStars(rating) {
+    stars.forEach((star, index) => {
+      const starValue = index + 1;
+      star.classList.remove('selected');
+      if (starValue <= rating) {
+        star.classList.add('selected');
+      }
+    });
+  }
+
+  // Atualiza a classificação
+  function updateRating(newRating) {
+    totalVotes++;
+    currentRating = ((currentRating * (totalVotes - 1)) + newRating) / totalVotes;
+    ratingText.textContent = currentRating.toFixed(1);
+    votesText.textContent = `(${totalVotes} votos)`;
+    updateStars(currentRating);
+  }
+
+  // Inicializa com a nota padrão
+  updateStars(currentRating);
+  ratingText.textContent = currentRating.toFixed(1);
+  votesText.textContent = `(${totalVotes} voto)`; // Nota inicial com 1 voto
+
+  // Configuração de eventos para interação com as estrelas
+  stars.forEach(star => {
+    star.addEventListener('mouseover', () => {
+      const value = parseInt(star.getAttribute('data-value'));
+      updateStars(value);
+    });
+
+    star.addEventListener('mouseout', () => {
+      updateStars(currentRating);
+    });
+
+    star.addEventListener('click', () => {
+      const value = parseInt(star.getAttribute('data-value'));
+      updateRating(value);
+    });
+  });
+
+
+    // Sistema de Zoom
+    const productImage = document.querySelector('.product-image');
+    const zoomedImage = document.querySelector('.zoomed-image');
+    const image = productImage.querySelector('img');
+
+
+    productImage.addEventListener('mousemove', (e) => {
+      const rect = productImage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const percentageX = (x / rect.width) * 100;
+      const percentageY = (y / rect.height) * 100;
+      zoomedImage.style.backgroundPosition = `${percentageX}% ${percentageY}%`;
+    });
+
+
+    productImage.addEventListener('mouseenter', () => {
+      zoomedImage.style.display = 'block';
+      zoomedImage.style.backgroundImage = `url(${image.src})`;
+      zoomedImage.style.backgroundSize = '200%';
+    });
+
+
+    productImage.addEventListener('mouseleave', () => {
+      zoomedImage.style.display = 'none';
+    });
+
+
+    // Elementos do DOM
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartIcon = document.getElementById('cart-icon');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    const cartCount = document.getElementById('cart-count');
+
+
+    let cart = [];
+
+
+    // Função para exibir a caixa de diálogo de quantidade
+    function showQuantityDialog(product) {
+      const quantity = prompt('Selecione a quantidade:', 1);
+      if (quantity) {
+        addToCart(product, quantity);
+      }
+    }
+
+
+    // Função para adicionar um produto ao carrinho
+    function addToCart(product, quantity) {
+      const cartItem = cart.find(item => item.id === product.id);
+      if (cartItem) {
+        cartItem.quantity += parseInt(quantity);
+      } else {
+        cart.push({ ...product, quantity: parseInt(quantity) });
+      }
+      updateCart();
+    }
+
+
+    // Função para atualizar o carrinho
+    function updateCart() {
+  cartCount.textContent = cart.length;
+
+  // Calcular o preço total
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  cartDropdown.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <p>${item.name} - ${item.quantity}x R$${item.price.toFixed(2)}</p>
+    </div>
+  `).join('');
+
+  cartDropdown.innerHTML += `
+    <div class="cart-footer">
+      <p><strong>Total: R$${totalPrice.toFixed(2)}</strong></p>
+      <button onclick="checkout()">Realizar Compra</button>
+    </div>
+  `;
+
+  // Atualizar o preço total no localStorage
+  localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+}
+
+
+
+    // Event listeners
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const product = {
+          id: 1,
+          name: 'Smartphone Samsung Galaxy S23',
+          price: 2699
+        };
+        showQuantityDialog(product);
+      });
+    });
+
+
+    cartIcon.addEventListener('click', () => {
+      cartDropdown.classList.toggle('show');
+    });
+
+    function addToCart(product, quantity) {
+  const cartItem = cart.find(item => item.id === product.id);
+  if (cartItem) {
+    cartItem.quantity += parseInt(quantity);
+  } else {
+    cart.push({ ...product, quantity: parseInt(quantity) });
+  }
+  updateCart();
+
+  // Salvar o carrinho no localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+
+
+ 
+
+  </script>
+</body>
+</html>
+
+
+

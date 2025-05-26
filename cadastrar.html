@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição do Mercado Trovão, seu mercado online para eletrônicos, roupas e mobília.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Trovão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+
+  <!-- Incluir a biblioteca jQuery Mask Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <link rel="stylesheet" href="pro.css" />
+  
+
+
+
+
+
+ 
+   
+  </script>
+
+
+</head>
+<body>
+  <!-- Cabeçalho adaptado -->
+  <header class="header">
+
+
+
+
+
+   
+      <div class="container">
+        <a href="inicial.html"><div class="logo"></a>
+          <a href="inicial.html"><img src="img/logo.webp" alt="Logo Mercado Trovão"></a>
+         <a href="inicial.html"> <h1>Mercado Trovão</h1></a>
+        </div>
+       
+        <div class="search-bar">
+            <div class="sumir">
+          <input type="text" placeholder="Buscar produtos...">
+          <button>Pesquisar</button>
+        </div>
+        </div>
+  
+        <div class="auth-buttons">
+          <a href="login.html"><button>Log In</button></a>
+          <a href="cadastrar.html"><button>Cadastrar</button></a>
+        
+          </div>
+        </div>
+      </div>
+  </header>
+    <section class="containerRege">
+      <header>Registro</header>
+      <form action="#" class="formRege" onsubmit="return validarFormulario(event)">
+        <div class="coluna">
+          <div class="input-box">
+            <label>Nome Completo</label>
+            <input type="text" placeholder="Digite seu nome completo" required />
+            <div id="nome-error" class="error-message">
+              O campo Nome Completo é obrigatório.
+            </div>
+          </div>
+          <div class="input-box">
+            <label>CPF</label>
+            <input id="cpf" type="text" placeholder="000.000.000-00" required />
+            <div id="cpf-error" class="error-message">CPF inválido.</div>
+          </div>
+        </div>
+        <div class="input-box">
+          <label>Endereço de Email</label>
+          <input type="email" placeholder="Digite seu email" required />
+          <div id="email-error" class="error-message">
+            Digite um email válido (deve conter "@").
+          </div>
+        </div>
+        <div class="coluna">
+          <div class="input-box password-containerRege">
+            <label>Senha</label>
+            <input
+              id="senha"
+              type="password"
+              placeholder="Digite sua senha"
+              required
+            />
+            <i
+              id="toggle-senha"
+              class="bi bi-eye toggle-password"
+              onclick="togglePasswordVisibility('senha', 'toggle-senha')"
+            ></i>
+          </div>
+          <div class="input-box password-containerRege">
+            <label>Confirmar Senha</label>
+            <input
+              id="confirmar-senha"
+              type="password"
+              placeholder="Confirme a senha"
+              required
+            />
+            <i
+              id="toggle-confirmar-senha"
+              class="bi bi-eye toggle-password"
+              onclick="togglePasswordVisibility('confirmar-senha', 'toggle-confirmar-senha')"
+            ></i>
+            <div id="senha-match-error" class="error-message">
+              Senhas Inválida.
+            </div>
+          </div>
+          <div id="senha-error" class="error-message">
+            Ambos os campos de senha são obrigatórios.
+          </div>
+        </div>
+        <div class="coluna">
+          <div class="input-box">
+            <label>Telefone (não obrigatório)</label>
+            <input
+              id="phone"
+              type="tel"
+              placeholder="(00) 00000-0000"
+            />
+          </div>
+          <div class="input-box">
+            <label>Data de Nascimento</label>
+            <input class="up"
+              type="date"
+              placeholder="Digite sua data de nascimento"
+              required
+            />
+            <div id="data-error" class="error-message">
+              Você deve ter mais de 18 anos.
+            </div>
+          </div>
+        </div>
+        <button type="submit">CRIAR CONTA</button>
+
+        
+      </form>
+      <form action="login.html" class="regeLogin">
+        <div>
+         <button>LOGIN</button></div>
+        
+      </form>
+    </section>
+
+
+
+
+    <script>
+      window.onload = function () {
+        const phoneInputField = document.querySelector("#phone");
+        const iti = window.intlTelInput(phoneInputField, {
+          initialCountry: "br",
+          preferredCountries: ["br", "us", "gb", "ca", "in"],
+          separateDialCode: true,
+          utilsScript:
+            "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+        });
+
+        // Máscara para o número local
+        let phoneMask;
+
+        function applyMask() {
+          const countryData = iti.getSelectedCountryData();
+          const isBrazil = countryData.iso2 === "br";
+          const mask = isBrazil ? "(00) 00000-0000" : "0000000000";
+          if (phoneMask) phoneMask.destroy();
+          phoneMask = IMask(phoneInputField, { mask });
+        }
+
+        // Configura o valor inicial com base no Brasil
+        applyMask();
+
+        // Atualiza a máscara ao mudar de país
+        phoneInputField.addEventListener("countrychange", function () {
+          applyMask();
+        });
+
+        // Máscara para o campo CPF
+        const cpfField = document.querySelector("#cpf");
+        IMask(cpfField, {
+          mask: "000.000.000-00",
+        });
+      };
+
+      function togglePasswordVisibility(inputId, toggleIconId) {
+        const passwordInput = document.getElementById(inputId);
+        const toggleIcon = document.getElementById(toggleIconId);
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleIcon.classList.remove("bi-eye");
+          toggleIcon.classList.add("bi-eye-slash");
+        } else {
+          passwordInput.type = "password";
+          toggleIcon.classList.remove("bi-eye-slash");
+          toggleIcon.classList.add("bi-eye");
+        }
+      }
+
+      function validarFormulario(event) {
+        event.preventDefault();
+
+        let formValido = true;
+
+        const nome = document.querySelector(
+          'input[placeholder="Digite seu nome completo"]'
+        );
+        const cpf = document.querySelector("#cpf");
+        const email = document.querySelector('input[type="email"]');
+        const dataNascimento = document.querySelector('input[type="date"]');
+        const senha = document.getElementById("senha");
+        const confirmarSenha = document.getElementById("confirmar-senha");
+
+        const mensagensErro = document.querySelectorAll(".error-message");
+        mensagensErro.forEach((msg) => msg.classList.remove("active"));
+
+        const hoje = new Date();
+        const dataMinima = new Date(
+          hoje.getFullYear() - 18,
+          hoje.getMonth(),
+          hoje.getDate()
+        );
+
+        const campos = [nome, cpf, email, dataNascimento, senha, confirmarSenha];
+        campos.forEach((campo) => campo.classList.remove("input-error"));
+
+        if (nome.value.trim() === "") {
+          nome.classList.add("input-error");
+          document.getElementById("nome-error").classList.add("active");
+          formValido = false;
+        }
+
+        if (cpf.value.trim().length !== 14) {
+          cpf.classList.add("input-error");
+          document.getElementById("cpf-error").classList.add("active");
+          formValido = false;
+        }
+
+        if (!email.value.includes("@")) {
+          email.classList.add("input-error");
+          document.getElementById("email-error").classList.add("active");
+          formValido = false;
+        }
+
+        if (
+          new Date(dataNascimento.value) > dataMinima ||
+          !dataNascimento.value
+        ) {
+          dataNascimento.classList.add("input-error");
+          document.getElementById("data-error").classList.add("active");
+          formValido = false;
+        }
+
+        if (senha.value.trim() === "" || confirmarSenha.value.trim() === "") {
+          senha.classList.add("input-error");
+          confirmarSenha.classList.add("input-error");
+          document.getElementById("senha-error").classList.add("active");
+          formValido = false;
+        } else if (senha.value !== confirmarSenha.value) {
+          senha.classList.add("input-error");
+          confirmarSenha.classList.add("input-error");
+          document.getElementById("senha-match-error").classList.add("active");
+          formValido = false;
+        }
+
+        if (formValido) {
+          window.location.href ="inicial.html";
+        }
+      }
+    </script>
+  </body>
+</html>

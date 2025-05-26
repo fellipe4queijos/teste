@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição do Mercado Trovão, seu mercado online para eletrônicos, roupas e mobília.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Trovão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+
+  <!-- Incluir a biblioteca jQuery Mask Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <link rel="stylesheet" href="pro.css" />
+  
+  <link rel="stylesheet" href="pro.css" />
+
+  <script>
+    function toggleSidebar() {
+   const sidebar = document.getElementById('sidebar');
+   const sidebarWidth = window.getComputedStyle(sidebar).width;
+   const currentLeft = window.getComputedStyle(sidebar).left;
+ 
+   sidebar.style.left = currentLeft === `-${sidebarWidth}` ? '0' : `-${sidebarWidth}`;
+ }
+ 
+   </script>
+
+
+ 
+   
+
+
+</head>
+<body>
+  <!-- Cabeçalho adaptado -->
+  <header class="header">
+
+
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&#10006;</button>
+        <nav>
+          <ul>
+              <li><a href="inicial.html">Início</a></li>
+              <li><a href="meusPedidos.html">Meus Pedidos</a></li>
+              <li><a href="configDados.html">Meus Dados</a></li>
+              <li><a href="cadastroTransportadora.html">Cadastrar Transporadora</a></li>
+              <li><a href="cadastroCliente.html">Cadastrar cliente</a></li>
+              <li><a href="cadastroFornecedor.html">Cadastrar Fornecedor</a></li>
+              <li><a href="cadastroProduto.html">Cadastrar Produto</a></li>
+              
+            </ul>
+            </nav>
+      </div>
+   
+
+
+      <button class="open-sidebar-btn" onclick="toggleSidebar()">&#9776;</button>
+
+
+   
+      <div class="container">
+        <a href="inicial.html"><div class="logo"></a>
+          <a href="inicial.html"><img src="img/logo.webp" alt="Logo Mercado Trovão"></a>
+         <a href="inicial.html"> <h1>Mercado Trovão</h1></a>
+         <div class="espaca"><h1>Meus Pedidos</h1></div>
+        </div>
+       
+        <div class="search-bar">
+            <div class="sumir">
+          <input type="text" placeholder="Buscar produtos...">
+          <button>Pesquisar</button>
+        </div>
+        </div>
+  
+        <div class="auth-buttons">
+          <a href="login.html"><button>Log In</button></a>
+          <a href="cadastrar.html"><button>Cadastrar</button></a>
+        
+          </div>
+        </div>
+      </div>
+  </header>
+
+  <div class="main-content">
+    <div class="order">
+      <h2>Pedido #12345</h2>
+      <div class="order-details">
+        <div class="details-item">Data/Hora: 12/12/2024 14:30:00</div>
+        <div class="details-item">Pagamento: MercadoPago Pix</div>
+        <div class="details-item">Valor: R$ 199,99</div>
+      </div>
+      <div class="status-container">
+        <div class="status-step">
+          <div class="icon completed"><i class="fas fa-box-open"></i></div>
+          <div class="label">Em preparação</div>
+          <div class="date-time">
+            <div class="start-end">
+              <div>12/12/2024 14:30:00</div>
+              <div class="divider">-</div>
+              <div>12/12/2024 15:00:00</div>
+            </div>
+          </div>
+          <div class="status-line"></div>
+        </div>
+        <div class="status-step">
+          <div class="icon completed"><i class="fas fa-truck"></i></div>
+          <div class="label">Despachado</div>
+          <div class="date-time">
+            <div class="start-end">
+              <div>12/12/2024 15:00:00</div>
+              <div class="divider">-</div>
+              <div>13/12/2024 09:00:00</div>
+            </div>
+          </div>
+          <div class="status-line"></div>
+        </div>
+        <div class="status-step">
+          <div class="icon completed"><i class="fas fa-plane"></i></div>
+          <div class="label">Em trânsito</div>
+          <div class="date-time">
+            <div class="start-end">
+              <div>13/12/2024 09:00:00</div>
+              <div class="divider">-</div>
+              <div>14/12/2024 14:30:00</div>
+            </div>
+          </div>
+          <div class="status-line"></div>
+        </div>
+        <div class="status-step">
+          <div class="icon"><i class="fas fa-clipboard-check"></i></div>
+          <div class="label">Saiu para entrega</div>
+          <div class="date-time">
+            <div class="start-end">
+              <div>14/12/2024 14:30:00</div>
+              <div class="divider">-</div>
+              <div>em processo</div>
+            </div>
+          </div>
+          <div class="status-line"></div>
+        </div>
+        <div class="status-step">
+          <div class="icon"><i class="fas fa-home"></i></div>
+          <div class="label">Entregue</div>
+          <div class="date-time"></div>
+        </div>
+      </div>
+    </div>
+    <div class="order">
+      <h2>Pedido #12346</h2>
+      <div class="order-details">
+        <div class="details-item">Data/Hora: 13/12/2024 15:00:00</div>
+        <div class="details-item">Pagamento: MercadoPago Pix</div>
+        <div class="details-item">Valor: R$ 99,99</div>
+      </div>
+      <div class="status-container">
+        <div class="status-step">
+          <div class="icon completed"><i class="fas fa-box-open"></i></div>
+          <div class="label">Em preparação</div>
+          <div class="date-time">
+            <div class="start-end">
+              <div>13/12/2024 15:00:00</div>
+              <div class="divider">-</div>
+              <div>13/12/2024 17:30:00</div>
+            </div>
+          </div>
+          <div class="status-line"></div>
+        </div>
+        <div class="status-step">
+          <div class="icon"><i class="fas fa-truck"></i></div>
+          <div class="label">Despachado</div>
+          <div class="date-time">
+            <div class="start-end">
+              <div>13/12/2024 17:30:00</div>
+              <div class="divider">-</div>
+              <div>em processo</div>
+            </div>
+          </div>
+          <div class="status-line"></div>
+        </div>
+        <div class="status-step">
+          <div class="icon"><i class="fas fa-plane"></i></div>
+          <div class="label">Em trânsito</div>
+          <div class="date-time"></div>
+          <div class="status-line"></div>
+        </div>
+        <div class="status-step">
+          <div class="icon"><i class="fas fa-clipboard-check"></i></div>
+          <div class="label">Saiu para entrega</div>
+          <div class="date-time"></div>
+          <div class="status-line"></div>
+        </div>
+        <div class="status-step">
+          <div class="icon"><i class="fas fa-home"></i></div>
+          <div class="label">Entregue</div>
+          <div class="date-time"></div>
+        </div>
+      </div>
+    </div>
+    <div class="order">
+      <h2>Pedido #12347</h2>
+      <div class="order-details">
+            <div class="details-item">Data/Hora: 14/12/2024 16:00:00</div>
+            <div class="details-item">Pagamento: MercadoPago Pix</div>
+            <div class="details-item">Valor: R$ 299,99</div>
+          </div>
+          <div class="status-container">
+            <div class="status-step">
+              <div class="icon completed"><i class="fas fa-box-open"></i></div>
+              <div class="label">Em preparação</div>
+              <div class="date-time">
+                <div class="start-end">
+                  <div>14/12/2024 16:00:00</div>
+                  <div class="divider">-</div>
+                  <div>14/12/2024 19:45:00</div>
+                </div>
+              </div>
+              <div class="status-line"></div>
+            </div>
+            <div class="status-step">
+              <div class="icon completed"><i class="fas fa-truck"></i></div>
+              <div class="label">Despachado</div>
+              <div class="date-time">
+                <div class="start-end">
+                  <div>14/12/2024 19:45:00</div>
+                  <div class="divider">-</div>
+                  <div>15/12/2024 09:00:00</div>
+                </div>
+              </div>
+              <div class="status-line"></div>
+            </div>
+            <div class="status-step">
+              <div class="icon completed"><i class="fas fa-plane"></i></div>
+              <div class="label">Em trânsito</div>
+              <div class="date-time">
+                <div class="start-end">
+                  <div>15/12/2024 09:00:00</div>
+                  <div class="divider">-</div>
+                  <div>16/12/2024 14:30:00</div>
+                </div>
+              </div>
+              <div class="status-line"></div>
+            </div>
+            <div class="status-step">
+              <div class="icon completed"><i class="fas fa-clipboard-check"></i></div>
+              <div class="label">Saiu para entrega</div>
+              <div class="date-time">
+                <div class="start-end">
+                  <div>16/12/2024 14:30:00</div>
+                  <div class="divider">-</div>
+                  <div>17/12/2024 10:00:00</div>
+                </div>
+              </div>
+              <div class="status-line"></div>
+            </div>
+            <div class="status-step">
+              <div class="icon completed"><i class="fas fa-home"></i></div>
+              <div class="label">Entregue</div>
+              <div class="date-time">17/12/2024 10:00:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    

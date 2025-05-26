@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição do Mercado Trovão, seu mercado online para eletrônicos, roupas e mobília.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Trovão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Incluir a biblioteca jQuery Mask Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <link rel="stylesheet" href="pro.css" />
+
+  <script>
+    function toggleSidebar() {
+   const sidebar = document.getElementById('sidebar');
+   const sidebarWidth = window.getComputedStyle(sidebar).width;
+   const currentLeft = window.getComputedStyle(sidebar).left;
+ 
+   sidebar.style.left = currentLeft === `-${sidebarWidth}` ? '0' : `-${sidebarWidth}`;
+ }
+ 
+   </script>
+ 
+
+
+ 
+   
+  </script>
+
+
+</head>
+<body>
+  <!-- Cabeçalho adaptado -->
+  <header class="header">
+
+
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&#10006;</button>
+        <nav>
+            <ul>
+                <li><a href="inicial.html">Início</a></li>
+                <li><a href="meusPedidos.html">Meus Pedidos</a></li>
+                <li><a href="configDados.html">Meus Dados</a></li>
+                <li><a href="cadastroTransportadora.html">Cadastrar Transporadora</a></li>
+                <li><a href="cadastroCliente.html">Cadastrar cliente</a></li>
+                <li><a href="cadastroFornecedor.html">Cadastrar Fornecedor</a></li>
+                <li><a href="cadastroProduto.html">Cadastrar Produto</a></li>
+                
+              </ul>
+              </nav>
+      </div>
+   
+
+
+      <button class="open-sidebar-btn" onclick="toggleSidebar()">&#9776;</button>
+
+
+   
+      <div class="container">
+            
+        <a href="inicial.html"><div class="logo"></a>
+          <a href="inicial.html"><img src="img/logo.webp" alt="Logo Mercado Trovão"></a>
+         <a href="inicial.html"> <h1>Mercado Trovão</h1></a>
+         <div class="espaca"><h1>Cadastro Cliente</h1></div>
+       
+        </div>
+        <div class="search-bar">
+            <div class="sumir">
+          <input type="text" placeholder="Buscar produtos...">
+          <button>Pesquisar</button>
+        </div>
+        </div>
+  
+        <div class="auth-buttons">
+          <a href="login.html"><button>Log In</button></a>
+          <a href="cadastrar.html"><button>Cadastrar</button></a>
+        
+          </div>
+        </div>
+      </div>
+  </header>
+
+
+
+
+
+  <div class="colunaEst">
+
+    <div class="pal">
+        <div class="col">
+           
+            <div>Código:</div>
+            <input type="text" id="cod">
+            <div class="error" id="codError"></div>
+        
+        <div class="col">
+            <div>Nome:</div>
+            <input type="text" id="nome">
+            <div class="error" id="nomeError"></div>
+        </div>
+  
+
+    </div>
+
+    <div class="col">
+        <div>Email:</div>
+        <input type="text" id="mail">
+        <div class="error" id="mailError"></div>
+    </div>
+
+<div class="coluna">
+
+        <div class="col">
+            <div>Telefone:</div>
+            <input type="text" id="fone" placeholder="(00) 00000-0000">
+            <div class="error" id="foneError"></div>
+        </div>
+     
+        <div class="col">
+            <div>CPF:</div>
+            <input type="text" id="cpf" placeholder="000.000.000-00">
+            <div class="error" id="cpfError"></div>
+        </div>
+
+</div>
+
+        <div class="col">
+            <div>Endereço:</div>
+            <input type="text" id="rua" placeholder="Rua">
+            <div class="error" id="ruaError"></div>
+            <input type="text" id="cep" placeholder="CEP">
+            <div class="error" id="cepError"></div>
+            <input type="text" id="cidade" placeholder="Cidade">
+            <div class="error" id="cidadeError"></div>
+            <input type="text" id="estado" placeholder="Estado">
+            <div class="error" id="estadoError"></div>
+        </div>
+        <div class="col">
+            <input type="button" value="Salvar" onclick="save()" class="save">
+        </div>
+
+    </div>
+
+    <div class="res" id="result">
+        <table id="resultTabela">
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Ações</th>
+            </tr>
+        </table>
+    </div>
+
+    </div>
+
+    <script>
+        window.onload = function () {
+            showTabela();
+            applyMasks();
+        };
+
+        let editIndex = -1;
+
+        // Inicializar o localStorage
+        if (!localStorage.getItem('pessoas')) {
+            localStorage.setItem('pessoas', JSON.stringify([]));
+        }
+
+        // Função para aplicar as máscaras
+        function applyMasks() {
+            $(document).ready(function () {
+                $('#fone').mask('(99) 99999-9999');
+                $('#cpf').mask('999.999.999-99');
+                $('#cep').mask('00000-000');
+                
+            });
+        }
+
+        function save() {
+            // Limpar mensagens de erro
+            document.getElementById("codError").innerText = '';
+            document.getElementById("nomeError").innerText = '';
+            document.getElementById("foneError").innerText = '';
+            document.getElementById("mailError").innerText = '';
+            document.getElementById("cpfError").innerText = '';
+            document.getElementById("ruaError").innerText = '';
+            document.getElementById("cepError").innerText = '';
+            document.getElementById("cidadeError").innerText = '';
+            document.getElementById("estadoError").innerText = '';
+
+            let num= document.getElementById("fone").value.trim();
+            let cpfNew = document.getElementById("cpf").value.trim();
+            let cepNew = document.getElementById("cep").value.trim();
+
+            // Capturar valores
+            let code = document.getElementById("cod").value.trim();
+            let nome = document.getElementById("nome").value.trim();
+            let fone = document.getElementById("fone").value.trim().replace(/\D/g, '');
+            let email = document.getElementById("mail").value.trim();
+            let cpf = document.getElementById("cpf").value.trim().replace(/\D/g, '');
+            let rua = document.getElementById("rua").value.trim();
+            let cep = document.getElementById("cep").value.trim().replace(/\D/g, '');
+            let cidade = document.getElementById("cidade").value.trim();
+            let estado = document.getElementById("estado").value.trim();
+
+            // Validações
+            if (code === '') {
+                document.getElementById("codError").innerText = "O campo 'Código' é obrigatório.";
+                return;
+            }
+
+            if (nome === '') {
+                document.getElementById("nomeError").innerText = "O campo 'Nome' é obrigatório.";
+                return;
+            }
+
+            if (fone === '') {
+                document.getElementById("foneError").innerText = "O campo 'Telefone' deve ser preenchido.";
+                return;
+            } else if (!/^\d+$/.test(fone)) {
+                document.getElementById("foneError").innerText = "O campo 'Telefone' deve conter apenas números.";
+                return;
+            }else if(!/^\d{11}$/.test(fone)){
+                document.getElementById("foneError").innerText = "O campo 'Telefone' deve ser preenchido Corretamente.";
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById("mailError").innerText = "O campo 'Email' deve ser válido.";
+                return;
+            }
+
+            if (cpf === '') {
+                document.getElementById("cpfError").innerText = "O campo 'CPF' é obrigatório.";
+                return;
+            } else if (!/^\d{11}$/.test(cpf)) {
+                document.getElementById("cpfError").innerText = "O campo 'CPF' deve conter 11 dígitos numéricos.";
+                return;
+            }
+
+            if (rua === '') {
+                document.getElementById("ruaError").innerText = "O campo 'Rua' é obrigatório.";
+                return;
+            }
+
+            if (cep === '') {
+                document.getElementById("cepError").innerText = "O campo 'CEP' é obrigatório.";
+                return;
+            }
+
+            if (cidade === '') {
+                document.getElementById("cidadeError").innerText = "O campo 'Cidade' é obrigatório.";
+                return;
+            }
+
+            if (estado === '') {
+                document.getElementById("estadoError").innerText = "O campo 'Estado' é obrigatório.";
+                return;
+            }
+
+            // Obter dados do localStorage
+            let pessoas = JSON.parse(localStorage.getItem("pessoas"));
+
+            // Atualizar ou adicionar novo
+            let pessoa = {
+                cod: code,
+                nome: nome,
+                fone: num,
+                email: email,
+                cpf: cpfNew,
+                endereco: {
+                    rua: rua,
+                    cep: cepNew,
+                    cidade: cidade,
+                    estado: estado
+                }
+            };
+
+            if (editIndex === -1) {
+                pessoas.push(pessoa);
+            } else {
+                pessoas[editIndex] = pessoa;
+                editIndex = -1;
+            }
+
+            localStorage.setItem('pessoas', JSON.stringify(pessoas));
+            showTabela();
+            resetForm();
+        }
+
+        function showTabela() {
+            let pessoas = JSON.parse(localStorage.getItem("pessoas"));
+            let table = document.getElementById("resultTabela");
+            table.innerHTML = `
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+            `;
+
+            pessoas.forEach((pessoa, index) => {
+                let row = table.insertRow();
+                row.innerHTML = `
+                    <td>${pessoa.cod}</td>
+                    <td>${pessoa.nome}</td>
+                    <td>${pessoa.fone}</td>
+                    <td>${pessoa.email}</td>
+                    <td>${pessoa.cpf}</td>
+                    <td>${pessoa.endereco.rua}, ${pessoa.endereco.cidade}, ${pessoa.endereco.estado} - ${pessoa.endereco.cep}</td>
+                    <td>
+                        <button class="edit" onclick="edit(${index})">Editar</button>
+                        <button class="edit" onclick="deleteRow(${index})">Excluir</button>
+                    </td>
+                `;
+            });
+        }
+
+        function edit(index) {
+            editIndex = index;
+            let pessoa = JSON.parse(localStorage.getItem("pessoas"))[index];
+            document.getElementById("cod").value = pessoa.cod;
+            document.getElementById("nome").value = pessoa.nome;
+            document.getElementById("fone").value = pessoa.fone;
+            document.getElementById("mail").value = pessoa.email;
+            document.getElementById("cpf").value = pessoa.cpf;
+            document.getElementById("rua").value = pessoa.endereco.rua;
+            document.getElementById("cep").value = pessoa.endereco.cep;
+            document.getElementById("cidade").value = pessoa.endereco.cidade;
+            document.getElementById("estado").value = pessoa.endereco.estado;
+        }
+
+        function deleteRow(index) {
+            let pessoas = JSON.parse(localStorage.getItem("pessoas"));
+            pessoas.splice(index, 1);
+            localStorage.setItem('pessoas', JSON.stringify(pessoas));
+            showTabela();
+        }
+
+        function resetForm() {
+            document.getElementById("cod").value = '';
+            document.getElementById("nome").value = '';
+            document.getElementById("fone").value = '';
+            document.getElementById("mail").value = '';
+            document.getElementById("cpf").value = '';
+            document.getElementById("rua").value = '';
+            document.getElementById("cep").value = '';
+            document.getElementById("cidade").value = '';
+            document.getElementById("estado").value = '';
+        }
+
+        function showTabela() {
+            let pessoas = JSON.parse(localStorage.getItem("pessoas"));
+            let table = document.getElementById("resultTabela");
+            table.innerHTML = `
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+            `;
+
+            pessoas.forEach((pessoa, index) => {
+                let row = table.insertRow();
+                row.innerHTML = `
+                    <td>${pessoa.cod}</td>
+                    <td>${pessoa.nome}</td>
+                    <td>${pessoa.fone}</td>
+                    <td>${pessoa.email}</td>
+                    <td>${pessoa.cpf}</td>
+                    <td>
+                        <button class="show-address" onclick="toggleEndereco(this, ${index})">Mostrar</button>
+                        <span style="display:none;">${pessoa.endereco.rua}, ${pessoa.endereco.cidade}, ${pessoa.endereco.estado} - ${pessoa.endereco.cep}</span>
+                    </td>
+                    <td>
+                        <button class="edit" onclick="edit(${index})">Editar</button>
+                        <button class="delete" onclick="deleteRow(${index})">Excluir</button>
+                    </td>
+                `;
+            });
+        }
+
+        function toggleEndereco(button, index) {
+            let span = button.nextElementSibling;
+            if (span.style.display === "none") {
+                span.style.display = "inline";
+                button.innerText = "Ocultar";
+            } else {
+                span.style.display = "none";
+                button.innerText = "Mostrar";
+            }
+        }
+
+
+      
+        
+    </script>
+</body>
+
+</html>
+

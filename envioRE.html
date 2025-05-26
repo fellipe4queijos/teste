@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição do Mercado Trovão, seu mercado online para eletrônicos, roupas e mobília.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Trovão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="pro.css" />
+
+  <script>
+    function toggleSidebar() {
+   const sidebar = document.getElementById('sidebar');
+   const sidebarWidth = window.getComputedStyle(sidebar).width;
+   const currentLeft = window.getComputedStyle(sidebar).left;
+ 
+   sidebar.style.left = currentLeft === `-${sidebarWidth}` ? '0' : `-${sidebarWidth}`;
+ }
+ 
+
+
+ 
+   
+  </script>
+
+  <style>
+    .containerPay {
+      margin: auto;
+      margin-top: 3%;
+      align-items: center;
+      padding: 10px;
+      background-color: #ffffff;
+    }
+    h2 {
+      font-size: 24px;
+  color: #005eff;
+  margin-bottom: 10px;
+    }
+
+
+
+   
+
+  </style>
+
+
+</head>
+<body>
+  <!-- Cabeçalho adaptado -->
+  <header class="header">
+
+
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&#10006;</button>
+        <nav>
+          <ul>
+              <li><a href="inicial.html">Início</a></li>
+              <li><a href="meusPedidos.html">Meus Pedidos</a></li>
+              <li><a href="configDados.html">Meus Dados</a></li>
+              <li><a href="cadastroTransportadora.html">Cadastrar Transporadora</a></li>
+              <li><a href="cadastroCliente.html">Cadastrar cliente</a></li>
+              <li><a href="cadastroFornecedor.html">Cadastrar Fornecedor</a></li>
+              <li><a href="cadastroProduto.html">Cadastrar Produto</a></li>
+              
+            </ul>
+            </nav>
+      </div>
+   
+
+
+      <button class="open-sidebar-btn" onclick="toggleSidebar()">&#9776;</button>
+
+
+   
+      <div class="container">
+        <a href="inicial.html"><div class="logo"></a>
+          <a href="inicial.html"><img src="img/logo.webp" alt="Logo Mercado Trovão"></a>
+         <a href="inicial.html"> <h1>Mercado Trovão</h1></a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar produtos...">
+          <button>Pesquisar</button>
+        </div>
+        <div class="auth-buttons">
+          <a href="login.html"><button>Log In</button></a>
+          <a href="cadastrar.html"><button>Cadastrar</button></a>
+          <div class="cart-icon" id="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+            <div class="cart-dropdown" id="cart-dropdown">
+              <!-- Itens do carrinho -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
+
+
+
+
+
+  <div class="containerPay">
+    <form class="checkout-form" onsubmit="return finalizePurchase(event)">
+
+   
+    
+    
+
+
+      <div class="form-group shipping-methods">
+        <label><h2>Método de Envio</h2></label>
+        <div class="shipping-method">
+          <button type="button" onclick="selectShippingMethod('sedex', this)">
+            <img src="https://img.elo7.com.br/product/main/203FBE1/diferenca-frete-para-sedex-formosa-go-diferenca-frete-sedex.jpg" alt="Sedex">
+            Sedex
+          </button>
+        </div>
+        <div class="shipping-method">
+          <button type="button" onclick="selectShippingMethod('correios', this)">
+            <img src="https://logospng.org/download/correios/logo-correios-4096.png" alt="Correios">
+            Correios
+          </button>
+        </div>
+        <input type="hidden" id="selected-shipping-method" name="shipping-method" required>
+      </div> 
+      
+      <button class="btn-finalize" type="submit">Finalizar Compra</button>
+    </form>
+
+  </div>
+
+
+
+
+  <script>
+  
+
+
+
+
+    function selectShippingMethod(method, element) {
+      document.getElementById('selected-shipping-method').value = method;
+      // Remove a classe 'selected' de todos os botões
+      document.querySelectorAll('.shipping-method button').forEach(button => button.classList.remove('selected'));
+      // Adiciona a classe 'selected' ao botão clicado
+      element.classList.add('selected');
+    }
+
+    function finalizePurchase(event) {
+  event.preventDefault(); // Previne o envio do formulário
+
+ 
+  const shippingMethod = document.getElementById('selected-shipping-method').value;
+
+  if (!shippingMethod) {
+    alert("Por favor, selecione um método de envio.");
+    return false;
+  } else {
+    window.location.href = "./finalizarCompra.html";
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartDropdown = document.getElementById('cart-dropdown');
+            const cartCount = document.getElementById('cart-count');
+
+            // Atualizar o número de itens no carrinho
+            cartCount.textContent = cart.length;
+
+            // Renderizar os itens no dropdown do carrinho
+            if (cart.length > 0) {
+                cartDropdown.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <p>${item.name} - ${item.quantity}x R$${item.price.toFixed(2)}</p>
+                    </div>
+                `).join('');
+
+                cartDropdown.innerHTML += `
+                    <div class="cart-footer">
+                        <button onclick="checkout()">Realizar Compra</button>
+                    </div>
+                `;
+            } else {
+                cartDropdown.innerHTML = '<p>Carrinho vazio.</p>';
+            }
+        });
+
+        function checkout() {
+            alert('Indo para a página de pagamento.');
+            window.location.href = 'realizarCompra.html';
+        }
+
+
+
+
+
+
+
+        
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartIcon = document.getElementById('cart-icon');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    const cartCount = document.getElementById('cart-count');
+
+
+    let cart = [];
+
+
+    // Função para exibir a caixa de diálogo de quantidade
+    function showQuantityDialog(product) {
+      const quantity = prompt('Selecione a quantidade:', 1);
+      if (quantity) {
+        addToCart(product, quantity);
+      }
+    }
+
+
+    // Função para adicionar um produto ao carrinho
+    function addToCart(product, quantity) {
+      const cartItem = cart.find(item => item.id === product.id);
+      if (cartItem) {
+        cartItem.quantity += parseInt(quantity);
+      } else {
+        cart.push({ ...product, quantity: parseInt(quantity) });
+      }
+      updateCart();
+    }
+
+
+    // Função para atualizar o carrinho
+    function updateCart() {
+      cartCount.textContent = cart.length;
+      cartDropdown.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <p>${item.name} - ${item.quantity}x R$${item.price}</p>
+        </div>
+      `).join('');
+      cartDropdown.innerHTML += `
+        <div class="cart-footer">
+          <button onclick="checkout()">Realizar Compra</button>
+        </div>
+      `;
+    }
+
+     // Event listeners
+     addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const product = {
+          id: 1,
+          name: 'Smartphone Samsung Galaxy S23',
+          price: 2699
+        };
+        showQuantityDialog(product);
+      });
+    });
+
+
+    cartIcon.addEventListener('click', () => {
+      cartDropdown.classList.toggle('show');
+    });
+
+
+    function finalizePurchase(event) {
+  event.preventDefault(); // Previne o envio do formulário
+
+ 
+  const shippingMethod = document.getElementById('selected-shipping-method').value;
+
+  if (!shippingMethod) {
+    alert("Por favor, selecione uma forma de pagamento e um método de envio.");
+    return false;
+  } else {
+    // Salva as informações no localStorage
+   
+    localStorage.setItem('shippingMethod', shippingMethod);
+
+    // Redireciona para a página de finalização
+    window.location.href = "./finalizarCompra.html";
+  }
+}
+
+   
+    
+  </script>
+</body>
+</html>
+
+

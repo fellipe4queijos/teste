@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição do Mercado Trovão, seu mercado online para eletrônicos, roupas e mobília.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Trovão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+
+  <!-- Incluir a biblioteca jQuery Mask Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+  
+  
+
+
+  <script>
+    function toggleSidebar() {
+   const sidebar = document.getElementById('sidebar');
+   const sidebarWidth = window.getComputedStyle(sidebar).width;
+   const currentLeft = window.getComputedStyle(sidebar).left;
+ 
+   sidebar.style.left = currentLeft === `-${sidebarWidth}` ? '0' : `-${sidebarWidth}`;
+ }
+ 
+   </script>
+
+<style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background: #f5f5f5;
+      min-height: 100vh;
+      background-attachment: fixed;
+    }
+
+
+
+
+    /* Cabeçalho fixo */
+    .header {
+      background-color: #005eff;
+      padding: 20px 0;
+      
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+
+
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+
+
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+
+
+
+    .logo img {
+      width: 70px;
+      height: 70px;
+      border-radius: 100%;
+    }
+
+
+
+
+    .logo h1 {
+      font-size: 28px;
+      color: #ffffff;
+     
+    }
+
+
+
+
+    .search-bar {
+      display: flex;
+      gap: 5px;
+      flex-grow: 1;
+      margin: 0 20px;
+    }
+
+
+
+
+    .search-bar input {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      width: 100%;
+      background-color: #ffffff;
+      color: #333;
+      font-size: 16px;
+    }
+
+
+
+
+    .search-bar button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #ff8c00;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+
+
+
+    .search-bar button:hover {
+      background: #ffa500;
+    }
+
+
+
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+
+
+
+    .auth-buttons button {
+      padding: 5px 10px;
+      border: 1px solid #ffffff;
+      background-color: transparent;
+      color: #ffffff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+
+
+
+    .auth-buttons button:hover {
+      background-color: #ffffff;
+      color: #005eff;
+    }
+
+
+
+
+    /* Conteúdo principal */
+    .main-content {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+
+
+
+    .category-section {
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+
+
+
+    .category-section h2 {
+      font-size: 24px;
+      color: #005eff;
+      margin-bottom: 20px;
+     
+      padding-left: 60px;
+    }
+
+
+
+
+    .product-carousel {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 20px 0;
+      margin-left: 40px;
+      margin-right: 20px;
+      scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+      -ms-overflow-style: none;  /* Oculta a barra de rolagem no IE e Edge */
+    }
+
+
+
+
+    .product-carousel::-webkit-scrollbar {
+      display: none; /* Oculta a barra de rolagem no Chrome, Safari e Opera */
+    }
+
+
+
+
+    .product-card {
+      min-width: 200px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      text-align: center;
+      padding: 20px;
+      margin-right: 20px;
+     
+      width: 240px;
+    }
+
+
+
+
+    .product-card:hover {
+      transform: translateY(-5px);
+     
+    }
+
+
+
+
+    .product-card img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      height: 160px;
+    }
+
+
+
+
+    .product-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+
+
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ff8c00;
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 24px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+
+
+    .carousel-btn:hover {
+      background: #ffa500;
+    }
+
+
+
+
+    .carousel-btn.prev {
+      left: -50px;
+    }
+
+
+
+
+    .carousel-btn.next {
+      right: -50px;
+    }
+
+
+
+
+    /* Rodapé */
+    .footer {
+      background-color: #005eff;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+      color: #ffffff;
+      
+    }
+
+
+
+
+    /* Media Queries para Responsividade */
+    @media (max-width: 768px) {
+      .header .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+
+
+
+      .product-card {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+      }
+
+
+
+
+      .search-bar, .auth-buttons {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  </style>
+
+
+ 
+   
+<link rel="stylesheet" href="pro.css">
+
+</head>
+<body>
+  <!-- Cabeçalho adaptado -->
+  <header class="header">
+
+
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&#10006;</button>
+        <nav>
+          <ul>
+              <li><a href="inicial.html">Início</a></li>
+              <li><a href="meusPedidos.html">Meus Pedidos</a></li>
+              <li><a href="configDados.html">Meus Dados</a></li>
+              <li><a href="cadastroTransportadora.html">Cadastrar Transporadora</a></li>
+              <li><a href="cadastroCliente.html">Cadastrar cliente</a></li>
+              <li><a href="cadastroFornecedor.html">Cadastrar Fornecedor</a></li>
+              <li><a href="cadastroProduto.html">Cadastrar Produto</a></li>
+              
+            </ul>
+            </nav>
+      </div>
+   
+
+
+      <button class="open-sidebar-btn" onclick="toggleSidebar()">&#9776;</button>
+
+
+   
+      <div class="container">
+        <a href="inicial.html"><div class="logo"></a>
+          <a href="inicial.html"><img src="img/logo.webp" alt="Logo Mercado Trovão"></a>
+         <a href="inicial.html"> <h1>Mercado Trovão</h1></a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar produtos...">
+          <button>Pesquisar</button>
+        </div>
+        <div class="auth-buttons">
+          <a href="login.html"><button>Log In</button></a>
+          <a href="cadastrar.html"><button>Cadastrar</button></a>
+          <div class="cart-icon" id="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+            <div class="cart-dropdown" id="cart-dropdown">
+              <!-- Itens do carrinho -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
+
+
+
+  <!-- Conteúdo principal -->
+  <main class="main-content">
+    <section class="category-section">
+      <h2>Eletrônicos</h2>
+      <button class="carousel-btn prev" onclick="scrollCarousel('prev', 'electronics-carousel')">&#8249;</button>
+      <div class="product-carousel" id="electronics-carousel"></div>
+      <button class="carousel-btn next" onclick="scrollCarousel('next', 'electronics-carousel')">&#8250;</button>
+    </section>
+    <section class="category-section">
+      <h2>Roupas</h2>
+      <button class="carousel-btn prev" onclick="scrollCarousel('prev', 'clothing-carousel')">&#8249;</button>
+      <div class="product-carousel" id="clothing-carousel"></div>
+      <button class="carousel-btn next" onclick="scrollCarousel('next', 'clothing-carousel')">&#8250;</button>
+    </section>
+    <section class="category-section">
+      <h2>Mobília</h2>
+      <button class="carousel-btn prev" onclick="scrollCarousel('prev', 'furniture-carousel')">&#8249;</button>
+      <div class="product-carousel" id="furniture-carousel"></div>
+      <button class="carousel-btn next" onclick="scrollCarousel('next', 'furniture-carousel')">&#8250;</button>
+    </section>
+  </main>
+
+
+
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>&copy; 2024 Mercado Trovão - Todos os direitos reservados</p>
+  </footer>
+
+
+
+
+  <script>
+    window.onload = function(){
+      localStorage.setItem("cart", JSON.stringify([])); // Limpa o carrinho, mas mantém o LocalStorage ativo
+
+    }
+
+    function renderProducts(products, carouselId) {
+      const carousel = document.getElementById(carouselId);
+      products.forEach((product) => {
+        const productCard = document.createElement('div');
+        productCard.className
+        productCard.className = 'product-card';
+          productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+          `;
+          carousel.appendChild(productCard);
+        });
+      }
+
+
+
+
+      const electronicsProducts = [
+        { name: 'Smartphone', price: 'R$ 2.699,00', image: 'https://http2.mlstatic.com/D_NQ_NP_666000-MLA73439181017_122023-O.webp', href:"TesteProduto.html" },
+        { name: 'Notebook', price: 'R$ 3000,00', image: 'https://imgs.casasbahia.com.br/55065263/1g.jpg' },
+        { name: 'Fone de Ouvido', price: 'R$ 250,00', image: 'https://cdn.awsli.com.br/600x1000/1113/1113512/produto/110434143/0fd759954d.jpg' },
+        { name: 'Tablet', price: 'R$ 1200,00', image: 'https://m.media-amazon.com/images/I/61eecV0KUcL.jpg' },
+        { name: 'Controle de videogame', price: 'R$ 900,00', image: 'https://io.convertiez.com.br/m/feiradamadrugada/shop/products/images/418587542/large/controle-video-game-sem-fio-wireless-recarregavel-para-ps4pc_214840.jpg' },
+        { name: 'Televisão', price: 'R$ 2200,00', image: 'https://wx.mlcdn.com.br/ponzi/production/portaldalu/31726_01.jpg' },
+        { name: 'Câmera Digital', price: 'R$ 2200,00', image: 'https://www.detonashop.com.br/media/catalog/product/cache/041e82462066eef1ae3402cf9c4986f8/x/c/xcanon_powershot_sx70_hs_2_.jpg.pagespeed.ic.lhbeizpux5.jpg' },
+      ];
+
+
+
+
+      const clothingProducts = [
+        { name: 'Camiseta', price: 'R$ 50,00', image: 'https://http2.mlstatic.com/D_NQ_NP_699861-MLB72250717244_102023-O.webp' },
+        { name: 'Calça Jeans', price: 'R$ 120,00', image: 'https://static.camisariafmw.com.br/produtograde/20230914115132_2540997460_GZ.jpg' },
+        { name: 'Jaqueta', price: 'R$ 180,00', image: 'https://http2.mlstatic.com/D_NQ_NP_2X_720291-MLB76930225338_062024-F.webp' },
+        { name: 'Tênis', price: 'R$ 250,00', image: 'https://static.netshoes.com.br/produtos/tenis-adidas-runfalcon-30-masculino/26/FB8-4501-026/FB8-4501-026_zoom1.jpg?ts=1695699116' },
+        { name: 'Chapéu', price: 'R$ 40,00', image: 'https://www.mariachapeu.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/h/chapeu_fedora_classic_diamante_preto_01.jpg_1_2.jpg' },
+        { name: 'Capuz', price: 'R$ 40,00', image: 'https://www.perissato.com.br/wp-content/uploads/2020/12/1-17.png' },
+        { name: 'Cueca', price: 'R$ 19,00', image: 'https://modafacil.vteximg.com.br/arquivos/ids/394295-1000-1000/NAWN27_0214-1.jpg?v=637698419532900000' },
+      ];
+
+
+
+
+      const furnitureProducts = [
+        { name: 'Abajur', price: 'R$ 80,00', image: 'https://media.iluminifast.com.br/catalog/product/cache/2cfad559d5fa0882f09a22f00c3249bd/3/0/3040_e_41CT.82_2.webp' },
+        { name: 'Mesa de Centro', price: 'R$ 400,00', image: 'https://static-images-now.westwing.com.br/s/35692-6613-14864-1-product2.jpg' },
+        { name: 'Cadeira de Escritório', price: 'R$ 300,00', image: 'https://dcf83otphg8a2.cloudfront.net/Custom/Content/Products/98/88/988852_cadeira-escritorio-presidente-base-cromada-preta-mb-c730-20028_m1_637626398061654943.webp' },
+        { name: 'Sofá', price: 'R$ 1500,00', image: 'https://static.mobly.com.br/p/Modern-SofC3A1-3-Lugares-Nevada-Suede-Azul-Turquesa-5570-561847-1.jpg' },
+        { name: 'Estante', price: 'R$ 250,00', image: 'https://http2.mlstatic.com/D_NQ_NP_2X_944405-MLB79788501680_102024-F.webp' },
+        { name: 'Escrivaninha', price: 'R$ 320,00', image: 'https://images.tcdn.com.br/img/img_prod/481109/mesa_escrivaninha_com_gaveta_para_escritorio_notebook_pc_1_20m_cinamomo_mila_permobili_123462870_1_0f88746d8b7c108948de8bbbd2401553.jpg' },
+        { name: 'Cama', price: 'R$ 360,00', image: 'https://images.tcdn.com.br/img/img_prod/732240/cabeceira_de_cama_em_capitone_preta_1_60cm_359_1_c855f90412e6454060937c0f5bf476cf.png' },
+      ];
+
+
+
+
+      function scrollCarousel(direction, carouselId) {
+        const carousel = document.getElementById(carouselId);
+        const scrollAmount = direction === 'next' ? 220 : -220;
+        carousel.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+
+
+
+
+      renderProducts(electronicsProducts, 'electronics-carousel');
+      renderProducts(clothingProducts, 'clothing-carousel');
+      renderProducts(furnitureProducts, 'furniture-carousel');
+
+
+
+
+
+
+
+
+
+
+
+      function renderProducts(products, categoryId) {
+      const container = document.getElementById(categoryId);
+      container.innerHTML = products.map(product => `
+        <div class="product-card">
+          <a href="${product.href || '#'}" style="text-decoration: none; color: inherit;">
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+          </a>
+        </div>
+      `).join('');
+    }
+
+
+
+    renderProducts(electronicsProducts, 'electronics');
+    renderProducts(clothingProducts, 'clothing');
+    renderProducts(furnitureProducts, 'furniture');
+  
+    function adjustCarousel() {
+      const carousels = document.querySelectorAll('.product-carousel');
+      carousels.forEach(carousel => {
+        const grid = carousel.querySelector('.product-grid');
+        const prevBtn = carousel.querySelector('.carousel-btn.prev');
+        const nextBtn = carousel.querySelector('.carousel-btn.next');
+        const carouselWidth = carousel.clientWidth;
+        const gridWidth = grid.scrollWidth;
+        const totalButtonsWidth = prevBtn.clientWidth + nextBtn.clientWidth;
+       
+        const margin = (carouselWidth - gridWidth - totalButtonsWidth) / 2;
+        grid.style.marginLeft = `${margin}px`;
+        grid.style.marginRight = `${margin}px`;
+      });
+    }
+  
+    window.addEventListener('resize', adjustCarousel);
+    adjustCarousel();
+
+
+
+
+
+
+
+
+
+
+  
+   
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartDropdown = document.getElementById('cart-dropdown');
+        const cartCount = document.getElementById('cart-count');
+
+        // Atualizar o número de itens no carrinho
+        cartCount.textContent = cart.length;
+
+        // Renderizar os itens no dropdown do carrinho
+        if (cart.length > 0) {
+            cartDropdown.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <p>${item.name} - ${item.quantity}x R$${item.price.toFixed(2)}</p>
+                </div>
+            `).join('');
+
+            cartDropdown.innerHTML += `
+                <div class="cart-footer">
+                    <button onclick="checkout()">Realizar Compra</button>
+                </div>
+            `;
+        } else {
+            cartDropdown.innerHTML = '<p>Carrinho vazio.</p>';
+        }
+    });
+
+    function checkout() {
+        alert('Indo para a página de pagamento.');
+        window.location.href = 'realizarCompra.html';
+    }
+
+    function displayCartItems() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartContent = document.getElementById('cart-content');
+
+        if (cart.length === 0) {
+            cartContent.innerHTML = '<p>Nenhum item no carrinho.</p>';
+            return;
+        }
+
+        cartContent.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <p>${item.name} - ${item.quantity}x R$${item.price.toFixed(2)}</p>
+            </div>
+        `).join('');
+    }
+
+    // Chama a função ao carregar a página
+   
+
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartIcon = document.getElementById('cart-icon');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    const cartCount = document.getElementById('cart-count');
+
+
+    let cart = [];
+
+
+    // Função para exibir a caixa de diálogo de quantidade
+    function showQuantityDialog(product) {
+      const quantity = prompt('Selecione a quantidade:', 1);
+      if (quantity) {
+        addToCart(product, quantity);
+      }
+    }
+
+
+    // Função para adicionar um produto ao carrinho
+    function addToCart(product, quantity) {
+      const cartItem = cart.find(item => item.id === product.id);
+      if (cartItem) {
+        cartItem.quantity += parseInt(quantity);
+      } else {
+        cart.push({ ...product, quantity: parseInt(quantity) });
+      }
+      updateCart();
+    }
+
+
+    // Função para atualizar o carrinho
+    function updateCart() {
+      cartCount.textContent = cart.length;
+      cartDropdown.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <p>${item.name} - ${item.quantity}x R$${item.price}</p>
+        </div>
+      `).join('');
+      cartDropdown.innerHTML += `
+        <div class="cart-footer">
+          <button onclick="checkout()">Realizar Compra</button>
+        </div>
+      `;
+    }
+
+     // Event listeners
+     addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const product = {
+          id: 1,
+          name: 'Smartphone Samsung Galaxy S23',
+          price: 2699
+        };
+        showQuantityDialog(product);
+      });
+    });
+
+
+    cartIcon.addEventListener('click', () => {
+      cartDropdown.classList.toggle('show');
+    });
+
+
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
